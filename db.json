@@ -1,0 +1,20 @@
+{
+  "task": [
+    {
+      "id": 1,
+      "task_name": "seminar"
+    },
+    {
+      "id": 2,
+      "task_name": "exam"
+    },
+    {
+      "id": 3,
+      "task_name": "project"
+    },
+    {
+      "id": 4,
+      "task_name": "assignment"
+    }
+  ]
+}
