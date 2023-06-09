@@ -5,15 +5,17 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 12.x
+      nodejs: 14.x
     commands:
       - echo install process started
-      - npm install
-      - npm install -g @angular/cli
+      - npm install && npm install -g @angular/cli
   build:
     commands:
       - echo build process started now
-      - ng build --configuration=production --base-href ./
-      - echo build process finished, we should upload to S3 now
-      - ls -la dist/$APP_NAME
-      - aws s3 sync dist/$APP_NAME s3://my-awesome-bucket-of-files-sam --delete
+      - ng build --configuration=production
+  post_build:
+    commands:
+      - echo build process finished, we should uplload to S3 now
+      - cd dist/$APP_NAME
+      - ls -la
+      - aws s3 sync . s3://my-awsome-bucket-of-files-sam --delete
