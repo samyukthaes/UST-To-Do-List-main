@@ -8,11 +8,12 @@ phases:
       nodejs: 12.x
     commands:
       - echo install process started
-      - npm install && npm install -g @angular/cli
+      - npm install
+      - npm install -g @angular/cli
   build:
     commands:
       - echo build process started now
-      - ng build --configuration=production
+      - ng build --configuration=production --base-href ./
       - echo build process finished, we should upload to S3 now
       - ls -la dist/$APP_NAME
       - aws s3 sync dist/$APP_NAME s3://my-awesome-bucket-of-files-sam --delete
